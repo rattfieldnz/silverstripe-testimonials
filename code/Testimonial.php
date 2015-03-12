@@ -34,7 +34,7 @@ class Testimonial extends DataObject{
                 "MemberID",
                 "Member",
 				Member::get()->map("ID","Name")->toArray()
-			)->setEmptystring(_t("Testimonials.NoName", "No Name Left")
+			)->setEmptystring(_t("Testimonials.NoName", "No Name Left"))
 		);
         
 		return $fields;
