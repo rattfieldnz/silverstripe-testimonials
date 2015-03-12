@@ -28,28 +28,33 @@ class Testimonial extends DataObject{
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+        
 		$fields->addFieldToTab("Root.Main",
-			new DropdownField("MemberID","Member",
+			DropdownField::create(
+                "MemberID",
+                "Member",
 				Member::get()->map("ID","Name")->toArray()
-			)
+			)->setEmptystring(_t("Testimonials.NoName", "No Name Left")
 		);
-		if($this->Member()){
-			$fields->removeByName("Name");
-		}
+        
 		return $fields;
 	}
 
 	public function getFrontEndFields($params = null) {
 		$fields = $this->scaffoldFormFields($params);
+        
 		$fields->removeByName('Date');
 		$fields->removeByName('Hidden');
+        
 		if(!$this->isInDB()){
 			$fields->removeByName('Image');
 		}
 		if(isset($params['Testimonial']) && $params['Testimonial']->MemberID){
 			$fields->removeByName("Name");
 		}
+        
 		$fields->removeByName("MemberID");
+        
 		$this->extend('updateFrontEndFields', $fields);
 
 		return $fields;
