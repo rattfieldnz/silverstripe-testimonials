@@ -3,7 +3,7 @@
 Modified version of the testimonial management and display for a SilverStripe website.
 
 **Note** This is based on the module originally created by [Burnbright](https://github.com/burnbright/silverstripe-testimonials)
-that appears 
+that appears to have been abandond.
 
 ## Features
 
