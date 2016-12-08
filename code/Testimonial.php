@@ -36,7 +36,7 @@ class Testimonial extends DataObject{
 				Member::get()->map("ID","Name")->toArray()
 			)->setEmptystring(_t("Testimonials.NoName", "No Name Left"))
 		);
-        
+
 		return $fields;
 	}
 
@@ -74,10 +74,9 @@ class Testimonial extends DataObject{
 		return $this->getComponent("Image");
 	}
 
-    public function Name(){
-		$member = $this->Member();
-		if($member->exists()){
-			return $member->Name;
+	public function Name(){
+		if($this->Member()->exists()){
+			return $this->Member()->Name;
 		}
 		return $this->getField("Name");
 	}
