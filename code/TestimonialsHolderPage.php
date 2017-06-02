@@ -11,7 +11,7 @@ class TestimonialsHolderPage extends Page{
 		);
 		return $fields;
 	}
-
+	
 }
 
 class TestimonialsHolderPage_Controller extends Page_Controller{

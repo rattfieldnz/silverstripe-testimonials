@@ -14,9 +14,10 @@ $Form
 					<% end_with %>
 				<% end_if %>
 				<div class="text">
-					<p>"$Content"
-						<br/><span class="ref">$Name<% if Business %>, $Business<% end_if %>.</span>
-					</p>
+					<figure>
+					   <blockquote>"$Content"</blockquote>
+					   <figcaption>&#8212 $getStaticCredits<% if Business %>, of $Business<% end_if %>.</figcaption>
+					</figure>
 				</div>
 				<div class="clear"><!--  --></div>
 			</div>

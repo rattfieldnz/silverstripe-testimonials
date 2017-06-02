@@ -8,19 +8,21 @@ class Testimonial extends DataObject{
 	private static $db = array(
 		'Content' => 'Text',
 		'Name' => 'Varchar',
-		'Business' => 'Varchar',
+		'Business' => 'Varchar', 
+		'AdditionalCredits' => 'Varchar(1024)',
 		'Date' => 'Date',
 		'Hidden' => 'Boolean'
 	);
 
 	private static $has_one = array(
 		'Image' => 'Image',
-		'Member' => 'Member'
+		'Member' => 'Member', 
 	);
 
 	private static $summary_fields = array(
 		'Business',
 		'Name',
+		'AdditionalCredits', 
 		'Date'
 	);
 
@@ -34,8 +36,22 @@ class Testimonial extends DataObject{
                 "MemberID",
                 "Member",
 				Member::get()->map("ID","Name")->toArray()
-			)->setEmptystring(_t("Testimonials.NoName", "No Name Left"))
+			)->setEmptystring(_t("Testimonials.NoName", "Don't Select Member"))
 		);
+		
+		$fields->addFieldToTab(
+		    'Root.Main', 
+			TextField::create(
+			    'AdditionalCredits',
+				_t('Testimonial.AdditionalCredits', 'Additional Credits'), 
+				null, 
+				1024
+			)->setDescription(_t(
+                    'Testimonial.AdditionalCredits_Description',
+                    'If some authors of this testimonial don\'t have CMS access, enter their name(s) here. You can separate multiple names with a comma.')
+            )
+		);
+
 
 		return $fields;
 	}
@@ -87,6 +103,38 @@ class Testimonial extends DataObject{
 			$this->Date = date('Y-m-d H:i:s');
 		}
 	}
+	
+	/**
+     * Resolves static authors linked to this post.
+     *
+     * @return ArrayList
+     */
+    public function getStaticCredits()
+    {
+        $credits = "";
+
+		if($this->AdditionalCredits){
+			
+			$authors = array_filter(preg_split('/\s*,\s*/', $this->AdditionalCredits));
+			sort($authors);
+			if($this->Name()){
+				array_push($authors, $this->Name());
+			}
+			
+			for($i = 0; $i < count($authors); $i++){
+				if($i != (count($authors) - 1)){
+					$credits .= $authors[$i] . ", ";
+				} 
+				else { 
+					$credits .= "and " . $authors[$i];
+				}
+			}
+
+			return $credits;
+		}
+		return $credits;
+    }
+    
 
 	public static function get_random($limit = 3) {
 		return Testimonial::get()->sort("RAND()")->limit($limit);

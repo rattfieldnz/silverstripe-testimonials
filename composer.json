@@ -1,11 +1,11 @@
 {
-    "name": "i-lateral/silverstripe-testimonials",
+    "name": "rattfieldnz/silverstripe-testimonials",
     "description": "Add testimonials to a SilverStripe site, either via a page or a widget",
     "type": "silverstripe-module",
 	"homepage": "http://github.com/i-lateral/silverstripe-testimonials",
 	"keywords": ["silverstripe", "testimonlials", "widget", "page"],
     "require": {
-        "silverstripe/cms": "~3.1"
+        "silverstripe/cms": "*"
     },
     "license": "BSD-2",
     "authors": [
@@ -16,10 +16,14 @@
         {
             "name": "Morven Lewis-Everley",
             "email": "morven@ilateral.co.uk"
-        }
+        }, 
+		{
+            "name": "Rob Attfield",
+            "email": "emailme@robertattfield.com"
+		}
     ],
 	"support": {
-		"issues": "http://github.com/i-lateral/silverstripe-testimonials/issues"
+		"issues": "http://github.com/rattfieldnz/silverstripe-testimonials/issues"
 	},
     "minimum-stability": "dev",
     "extra": {
