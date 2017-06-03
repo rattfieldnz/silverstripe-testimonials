@@ -1,7 +1,7 @@
 {
     "name": "rattfieldnz/silverstripe-testimonials",
     "description": "Add testimonials to a SilverStripe site, either via a page or a widget",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "silverstripe-module",
     "homepage": "http://github.com/rattfieldnz/silverstripe-testimonials",
     "keywords": ["silverstripe", "testimonials", "widget", "page"],
