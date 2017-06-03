@@ -6,6 +6,7 @@
     "homepage": "http://github.com/rattfieldnz/silverstripe-testimonials",
     "keywords": ["silverstripe", "testimonials", "widget", "page"],
     "require": {
+	"silverstripe/framework": "*",
         "silverstripe/cms": "*", 
         "rattfieldnz/silverstripe-testimonials-widgets": "*"
     },
