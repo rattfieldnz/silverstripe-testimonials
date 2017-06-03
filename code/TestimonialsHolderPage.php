@@ -2,8 +2,6 @@
 
 class TestimonialsHolderPage extends Page{
 
-	private static $no_of_testimonials_in_widget = 2;
-
 	function getCMSFields(){
 		$fields = parent::getCMSFields();
 		$fields->addFieldToTab("Root.Testimonials",
@@ -13,7 +11,7 @@ class TestimonialsHolderPage extends Page{
 		);
 		return $fields;
 	}
-	
+
 }
 
 class TestimonialsHolderPage_Controller extends Page_Controller{

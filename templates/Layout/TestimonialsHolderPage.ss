@@ -6,20 +6,8 @@ $Form
 	<div id="Testimonials" class="page">
 		<% loop $PaginatedTestimonials %>
 			<div id="Testimonial$ID" class="testimonial <% if Image %>image<% end_if %>">
-				<% if Image %>
-					<% with Image.SetWidth(112) %>
-						<div class="image">	
-							<img src="$URL"/>
-						</div>
-					<% end_with %>
-				<% end_if %>
-				<div class="text">
-					<figure>
-					   <blockquote>"$Content"</blockquote>
-					   <figcaption>&#8212 $Credits.</figcaption>
-					</figure>
-				</div>
-				<div class="clear"></div>
+				<% include TestimonialFull %>
+				<div class="clear"><!--  --></div>
 			</div>
 		<% end_loop %>
         
