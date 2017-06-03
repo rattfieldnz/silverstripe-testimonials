@@ -158,6 +158,10 @@ class Testimonial extends DataObject{
         if(empty($this->AdditionalCredits) && !empty($this->Name) && !empty($this->Business)) {
         	return $this->Name . ", of " . $this->Business;
         }
+		
+		if(empty($this->AdditionalCredits) && !empty($this->Name) && empty($this->Business)) {
+			return $this->Name;
+		}
 
         if(!empty($this->AdditionalCredits) && !empty($this->Name) && !empty($this->Business)) {
         	
