@@ -18,10 +18,10 @@
             "name": "Morven Lewis-Everley",
             "email": "morven@ilateral.co.uk"
         }, 
-	{
+        {
             "name": "Rob Attfield",
             "email": "emailme@robertattfield.com"
-	}
+        }
     ],
     "support": {
         "issues": "http://github.com/rattfieldnz/silverstripe-testimonials/issues"
