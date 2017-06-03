@@ -75,6 +75,40 @@ class Testimonial extends DataObject{
 
 		return $fields;
 	}
+	
+	public function TestimonialContent(){
+		
+		$wordCount = Config::inst()->get('TestimonialsHolderPage', 'testimonial_words_summary_count');
+		
+		return self::LimitWordCount($this->Content, $wordCount);
+	}
+	
+	
+	/**
+	 * Limit this field's content by a number of words.
+	 *
+	 * @param int $numWords Number of words to limit by
+	 * @param string $add Ellipsis to add to the end of truncated string
+	 * @return string
+	 */
+	private static function LimitWordCount($content, $numWords, $add = '...') {
+		
+		if(!empty($content)){
+			$content = trim(Convert::xml2raw($content));
+			$ret = explode(' ', $content, $numWords + 1);
+			
+			if(count($ret) <= $numWords - 1) {
+				$ret = $content;
+			} else {
+				array_pop($ret);
+				$ret = implode(' ', $ret) . $add;
+			}
+			
+			return $ret;
+		} else {
+			return "";
+		}
+	}
 
 	public function Link() {
 		if($page = TestimonialsHolderPage::get()->first()){
@@ -107,20 +141,30 @@ class Testimonial extends DataObject{
 	/**
      * Resolves static authors linked to this post.
      *
-     * @return ArrayList
+     * @return String
      */
-    public function getStaticCredits()
+    public function Credits()
     {
         $credits = "";
 
-		if($this->AdditionalCredits){
-			
-			$authors = array_filter(preg_split('/\s*,\s*/', $this->AdditionalCredits));
+        if(empty($this->AdditionalCredits) && empty($this->Name) && empty($this->Business)) {
+        	return "Anon";
+        }
+
+        if(empty($this->AdditionalCredits) && empty($this->Name) && !empty($this->Business)) {
+        	return $this->Business;
+        }
+
+        if(empty($this->AdditionalCredits) && !empty($this->Name) && !empty($this->Business)) {
+        	return $this->Name . ", of " . $this->Business;
+        }
+
+        if(!empty($this->AdditionalCredits) && !empty($this->Name) && !empty($this->Business)) {
+        	
+	        $authors = array_filter(preg_split('/\s*,\s*/', $this->AdditionalCredits));
+	        array_push($authors, $this->Name());
 			sort($authors);
-			if($this->Name()){
-				array_push($authors, $this->Name());
-			}
-			
+
 			for($i = 0; $i < count($authors); $i++){
 				if($i != (count($authors) - 1)){
 					$credits .= $authors[$i] . ", ";
@@ -129,10 +173,8 @@ class Testimonial extends DataObject{
 					$credits .= "and " . $authors[$i];
 				}
 			}
-
-			return $credits;
-		}
-		return $credits;
+            return $credits . ", of " . $this->Business;
+        }
     }
     
 

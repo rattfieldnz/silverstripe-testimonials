@@ -1,3 +1,7 @@
 Member:
   extensions:
     - MemberTestimonialExtension
+
+TestimonialsHolderPage: 
+  no_of_testimonials_in_widget: 2 
+  testimonial_words_summary_count: 50

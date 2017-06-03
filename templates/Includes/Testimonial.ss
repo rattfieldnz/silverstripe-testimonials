@@ -1,14 +1,14 @@
-<% if Image %>
-    <% with Image.SetWidth(112) %>
-        <div class="image">
-            <img src="$URL"/>
-        </div>
-    <% end_with %>
-<% end_if %>
-<div class="text">
-    <figure>
-       <blockquote>"$Content"</blockquote>
-       <figcaption>&#8212 $getStaticCredits<% if Business %>, of $Business<% end_if %>.</figcaption>
-    </figure>
-</div>
-<div class="clear"></div>
+<figure>
+    <% if Image %>
+        <% with Image.SetWidth(112) %>
+            <div class="image">
+                <img src="$URL"/>
+            </div>
+        <% end_with %>
+    <% end_if %>
+    <blockquote>"$TestimonialContent"</blockquote>
+    <figcaption>
+	    <p>&#8212 $Credits. </p>
+		<p><a href="$Link">Read more...</a></p>
+	</figcaption>
+</figure>

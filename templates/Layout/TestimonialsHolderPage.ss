@@ -16,10 +16,10 @@ $Form
 				<div class="text">
 					<figure>
 					   <blockquote>"$Content"</blockquote>
-					   <figcaption>&#8212 $getStaticCredits<% if Business %>, of $Business<% end_if %>.</figcaption>
+					   <figcaption>&#8212 $Credits.</figcaption>
 					</figure>
 				</div>
-				<div class="clear"><!--  --></div>
+				<div class="clear"></div>
 			</div>
 		<% end_loop %>
         
