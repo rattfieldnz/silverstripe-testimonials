@@ -10,6 +10,7 @@ class Testimonial extends DataObject
         'Name' => 'Varchar',
         'Business' => 'Varchar',
         'AdditionalCredits' => 'Varchar(1024)',
+        'VideoID' => 'Varchar(11)',
         'Date' => 'Date',
         'Hidden' => 'Boolean'
     );
@@ -53,6 +54,10 @@ class Testimonial extends DataObject
             )
         );
 
+        $fields->addFieldToTab(
+		    'Root.Main', 
+			new YouTubeField('VideoID', 'YouTube Video')
+		);
 
         return $fields;
     }
@@ -84,6 +89,11 @@ class Testimonial extends DataObject
         
         return self::LimitWordCount($this->Content, $wordCount);
     }
+	
+	public function YoutubeVideoID()
+	{
+		return $this->VideoID;
+	}
     
     
     /**

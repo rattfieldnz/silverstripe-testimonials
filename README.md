@@ -7,6 +7,6 @@ that appears to have been abandond.
 
 ## Features
 
- * Creation of testimonlials that can contain: Content, Name, Business, Date, Show and Image
+ * Creation of testimonials that can contain: Content, Name, Business, Date, Show and Image
  * Testimonials holder page that lists Testimonials.
- * Testimonlials widget that can show a random testimonial in the widget area.
+ * **NEW (version 4.0.0)** - You can now add Youtube videos to testimonials (thanks to the good work of the [YouTube Field for SilverStripe](https://github.com/silverstripe-terraformers/silverstripe-youtubefield) package, by [silverstripe-terraformers](https://github.com/silverstripe-terraformers)).
